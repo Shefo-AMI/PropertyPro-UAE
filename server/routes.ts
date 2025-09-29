@@ -280,7 +280,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const enrichedData = {
         ...requestData,
         category: requestData.category || analysis.category,
-        priority: requestData.priority || analysis.priority,
+        priority: (requestData.priority || analysis.priority) as "low" | "medium" | "high" | "urgent",
         estimatedCost: requestData.estimatedCost || analysis.estimatedCost.toString(),
       };
 

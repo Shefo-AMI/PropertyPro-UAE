@@ -56,7 +56,7 @@ export default function Properties() {
     enabled: isAuthenticated,
   });
 
-  const companyId = companies?.[0]?.id;
+  const companyId = (companies as any)?.[0]?.id;
 
   // Fetch properties
   const { data: properties = [], isLoading: propertiesLoading } = useQuery({
@@ -179,7 +179,7 @@ export default function Properties() {
                         <FormItem>
                           <FormLabel>Property Type</FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g., Apartment, House, Commercial" {...field} data-testid="input-property-type" />
+                            <Input placeholder="e.g., Apartment, House, Commercial" {...field} value={field.value || ""} data-testid="input-property-type" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -197,6 +197,7 @@ export default function Properties() {
                               placeholder="Enter number of units" 
                               {...field}
                               onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                              value={field.value || 0}
                               data-testid="input-property-units"
                             />
                           </FormControl>
@@ -211,7 +212,7 @@ export default function Properties() {
                         <FormItem>
                           <FormLabel>Description</FormLabel>
                           <FormControl>
-                            <Textarea placeholder="Enter property description" {...field} data-testid="input-property-description" />
+                            <Textarea placeholder="Enter property description" {...field} value={field.value || ""} data-testid="input-property-description" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -244,7 +245,7 @@ export default function Properties() {
             <div className="flex items-center justify-center py-8">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
             </div>
-          ) : properties.length === 0 ? (
+          ) : (properties as any[]).length === 0 ? (
             <div className="text-center py-12">
               <div className="bg-muted rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Plus className="h-8 w-8 text-muted-foreground" />
@@ -258,7 +259,7 @@ export default function Properties() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {properties.map((property: Property) => (
+              {(properties as Property[]).map((property: Property) => (
                 <PropertyCard key={property.id} property={property} />
               ))}
             </div>

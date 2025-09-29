@@ -34,7 +34,7 @@ export default function Tenants() {
     enabled: isAuthenticated,
   });
 
-  const companyId = companies?.[0]?.id;
+  const companyId = (companies as any)?.[0]?.id;
 
   // Fetch tenants
   const { data: tenants = [], isLoading: tenantsLoading } = useQuery({
@@ -81,7 +81,7 @@ export default function Tenants() {
             <div className="flex items-center justify-center py-8">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
             </div>
-          ) : tenants.length === 0 ? (
+          ) : (tenants as any[]).length === 0 ? (
             <div className="text-center py-12">
               <div className="bg-muted rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Plus className="h-8 w-8 text-muted-foreground" />
@@ -95,7 +95,7 @@ export default function Tenants() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-              {tenants.map((tenant) => (
+              {(tenants as any[]).map((tenant: any) => (
                 <TenantCard key={tenant.id} tenant={tenant} />
               ))}
               

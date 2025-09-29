@@ -21,9 +21,9 @@ export function Sidebar() {
   const [location] = useLocation();
   const { user } = useAuth();
 
-  const initials = user?.firstName && user?.lastName 
-    ? `${user.firstName[0]}${user.lastName[0]}` 
-    : user?.email?.[0]?.toUpperCase() || "U";
+  const initials = (user as any)?.firstName && (user as any)?.lastName 
+    ? `${(user as any).firstName[0]}${(user as any).lastName[0]}` 
+    : (user as any)?.email?.[0]?.toUpperCase() || "U";
 
   return (
     <div className={cn(
@@ -86,12 +86,12 @@ export function Sidebar() {
             {!isCollapsed && (
               <div className="ml-3">
                 <p className="text-sm font-medium text-sidebar-foreground" data-testid="text-user-name">
-                  {user?.firstName && user?.lastName 
-                    ? `${user.firstName} ${user.lastName}` 
-                    : user?.email || "User"}
+                  {(user as any)?.firstName && (user as any)?.lastName 
+                    ? `${(user as any).firstName} ${(user as any).lastName}` 
+                    : (user as any)?.email || "User"}
                 </p>
                 <p className="text-xs text-muted-foreground" data-testid="text-user-email">
-                  {user?.email || ""}
+                  {(user as any)?.email || ""}
                 </p>
               </div>
             )}

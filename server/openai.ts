@@ -1,10 +1,14 @@
 import OpenAI from "openai";
 
 // the newest OpenAI model is "gpt-5" which was released August 7, 2025. do not change this unless explicitly requested by the user
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = process.env.OPENAI_API_KEY ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY }) : null;
 
 export async function askAssistant(question: string, context?: string): Promise<string> {
   try {
+    if (!openai) {
+      return "AI Assistant is currently unavailable. Please configure the OpenAI API key to enable this feature.";
+    }
+
     const systemPrompt = `You are a helpful property management assistant. You help landlords and property managers with questions about their properties, tenants, maintenance, finances, and general property management best practices.
 
 ${context ? `Here is some context about the user's property management system: ${context}` : ''}
@@ -32,6 +36,14 @@ export async function analyzeMaintenanceRequest(description: string): Promise<{
   estimatedCost: number;
 }> {
   try {
+    if (!openai) {
+      return {
+        category: "General",
+        priority: "medium",
+        estimatedCost: 0,
+      };
+    }
+
     const response = await openai.chat.completions.create({
       model: "gpt-5",
       messages: [

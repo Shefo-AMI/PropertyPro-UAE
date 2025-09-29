@@ -7,7 +7,7 @@ import { StatsCard } from "@/components/stats-card";
 import { AIAssistant } from "@/components/ai-assistant";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Building, Home, Users, DollarSign, Plus, UserPlus, Wrench, FileText } from "lucide-react";
+import { Building, Home, Users, DollarSign, Plus, UserPlus, Wrench, FileText, BarChart3 } from "lucide-react";
 import { isUnauthorizedError } from "@/lib/authUtils";
 
 export default function Dashboard() {

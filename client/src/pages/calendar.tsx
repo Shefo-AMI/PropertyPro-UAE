@@ -35,7 +35,7 @@ export default function Calendar() {
     enabled: isAuthenticated,
   });
 
-  const companyId = companies?.[0]?.id;
+  const companyId = (companies as any)?.[0]?.id;
 
   const { data: events = [] } = useQuery({
     queryKey: ["/api/calendar-events/company", companyId],
@@ -86,7 +86,7 @@ export default function Calendar() {
           {/* Calendar Grid */}
           <Card className="mb-6" data-testid="card-calendar">
             <CardContent className="p-6">
-              <CalendarGrid events={events} />
+              <CalendarGrid events={events as any[]} />
             </CardContent>
           </Card>
 
@@ -96,14 +96,14 @@ export default function Calendar() {
               <CardTitle>Upcoming Events</CardTitle>
             </CardHeader>
             <CardContent>
-              {events.length === 0 ? (
+              {(events as any[]).length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
                   <p>No upcoming events</p>
                   <p className="text-sm mt-2">Events will appear here when scheduled</p>
                 </div>
               ) : (
                 <div className="space-y-3">
-                  {events.slice(0, 5).map((event) => (
+                  {(events as any[]).slice(0, 5).map((event: any) => (
                     <div key={event.id} className="flex items-center p-4 bg-muted rounded-lg" data-testid={`event-${event.id}`}>
                       <div className="w-3 h-3 bg-primary rounded-full mr-4"></div>
                       <div className="flex-1">

@@ -36,7 +36,7 @@ export default function Units() {
     enabled: isAuthenticated,
   });
 
-  const companyId = companies?.[0]?.id;
+  const companyId = (companies as any)?.[0]?.id;
 
   const { data: properties = [] } = useQuery({
     queryKey: ["/api/properties/company", companyId],
@@ -91,7 +91,7 @@ export default function Units() {
             </div>
           </div>
 
-          {properties.length === 0 ? (
+          {(properties as any[]).length === 0 ? (
             <div className="text-center py-12">
               <div className="bg-muted rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <Plus className="h-8 w-8 text-muted-foreground" />
