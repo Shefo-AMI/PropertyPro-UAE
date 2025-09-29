@@ -1,0 +1,105 @@
+
+I want to create and launch a complete SaaS web platform for Property Management (for landlords and property managers).
+Follow this checklist step-by-step and generate the required files until deployment:
+
+Setup Project
+
+Create a Next.js + Node.js project with TypeScript.
+
+Add package.json with scripts (dev, build, start, prisma, seed).
+
+Configure Tailwind CSS for styling.
+
+Database (Prisma + Supabase/Postgres)
+
+Generate prisma/schema.prisma with tables:
+
+Company, User, Property, Unit, Tenant, Tenancy, MaintenanceRequest, Invoice, CalendarEvent, Upload, AssistantLog.
+
+Include relations between them (Company → Users, Properties, Units, etc.).
+
+Create migration and a prisma/seed.ts script that inserts a demo company + an Owner account with default credentials.
+
+Core Pages (Next.js)
+
+/ → Dashboard layout with sidebar and collapsible toggle.
+
+/properties → List + add new property.
+
+/units → Upload CSV/Excel → auto-populate tenants and units.
+
+/tenants → Auto-update from uploaded sheets.
+
+/maintenance → Tracker for requests.
+
+/calendar → Show auto-generated payment reminders/events.
+
+AI Assistant
+
+Place an assistant widget (icon bottom-right).
+
+/api/assistant → backend route that answers user questions, without bypassing roles/permissions.
+
+Store interactions in AssistantLog.
+
+Deployment
+
+Add .github/workflows/deploy.yml → build, migrate DB, seed, deploy to Vercel.
+
+Add .env.example with required secrets: DATABASE_URL, OPENAI_API_KEY, VERCEL_TOKEN, DEV_OWNER_PASSWORD.
+
+Output
+
+Provide all files in a structured way (preferably as a downloadable ZIP).
+
+Confirm how to run locally:
+
+npm install
+npx prisma generate
+npx prisma migrate dev --name init
+node prisma/seed.js
+npm run dev
+
+
+Confirm how to deploy: push repo to GitHub, connect Vercel, add secrets, auto-deploy.
+
+
+
+Rental property management software is an all-in-one platform that helps landlords, property managers, and real estate investors manage their rentals online.
+
+Instead of juggling spreadsheets or multiple tools, a property management system centralizes everything in one place, from tenant screening, lease management, rent collection, and property accounting to maintenance tracking, reporting, and A property management software is a system that helps landlords and property owners save time, reduce errors, improve tenant satisfaction, and scale their portfolios more efficiently.
+
+removes the need and cost for all your other programs For Example :
+
+IT Replace QuickBooks with full property accounting and reporting
+Use our tools instead of Word for rental applications and leases
+Use eSignatures over printing, scanning, and faxing
+Eliminate endless phone calls with a tenant portal
+Automate background checks instead of manually screening tenants
+Collect rent online, reducing admin work
+Track maintenance requests and vendors 
+Set automated reminders 
+
+The platform Features are:
+
+CRM 
+Accounting
+Bookkeeping
+Owners Accounting
+QuickBooks
+Reports
+Leasing
+Maintenance
+Listings
+Rent Collection
+Applications & eSign
+Tenant Screening
+Tenants
+Product
+Communication
+Integrations
+Security
+Support
+OPERATIONS
+File Storage
+ 
