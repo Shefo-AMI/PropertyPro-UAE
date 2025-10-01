@@ -13,6 +13,7 @@ import Units from "@/pages/units";
 import Tenants from "@/pages/tenants";
 import Maintenance from "@/pages/maintenance";
 import Calendar from "@/pages/calendar";
+import Signup from "@/pages/signup";
 
 function Router() {
   const { isAuthenticated, isLoading } = useAuth();
@@ -23,7 +24,7 @@ function Router() {
         <Route path="/" component={Landing} />
       ) : (
         <>
-          <Route path="/" component={Dashboard} />
+          <Route path="/signup" component={Signup} />
           <Route path="/properties" component={Properties} />
           <Route path="/units" component={Units} />
           <Route path="/tenants" component={Tenants} />
